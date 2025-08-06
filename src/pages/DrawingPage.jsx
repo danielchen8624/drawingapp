@@ -3,14 +3,33 @@ import DrawCanvas from "../components/drawComponent";
 import "../css/colourpicker.css";
 
 function DrawPage() {
-  const canvasRef = useRef(null); //holds the canvas element
-  const [useColour, setUseColour] = useState("black");
+  const canvasRef = useRef(null);
+  const [useColour, setUseColour] = useState("#FFFFFF");
   const [useTool, setUseTool] = useState("pen");
   const [brushSize, setBrushSize] = useState(10);
   const [clear, setClear] = useState(false);
-  const [currentInUse, setCurrentInUse] = useState("red");
+  const [currentInUse, setCurrentInUse] = useState("black"); //redundant, change it so that the current in use outline can be cahgend by useColour
 
-  const colours = ["red", "blue", "green", "yellow", "pink"];
+  const colours = [
+    "#FFFFFF",
+    "#000000",
+    "#EF4444",
+    "#F97316",
+    "#FACC15",
+    "#10B981",
+    "#22D3EE",
+    "#3B82F6",
+    "#6366F1",
+    "#8B5CF6",
+    "#EC4899",
+    "#D946EF",
+    "#6B7280",
+    "#A855F7",
+    "#84CC16",
+    "#14B8A6",
+    "#F43F5E",
+  ];
+
   const tools = ["eraser"];
 
   const setUse = (using) => setCurrentInUse(using);
@@ -26,24 +45,32 @@ function DrawPage() {
     link.href = canvas.toDataURL("image/png");
     link.click();
   };
+  
+  const convertToAI = () => {
+    console.log("hai");
+  }
 
   return (
     <>
       <div className="hotbar">
-        {colours.map((colour) => (
-          <div key={colour}>
-            <button
-              className={`${colour}-buttonColour ${
-                currentInUse === colour ? "outlined" : ""
-              }`}
-              onClick={() => {
-                whichColour(colour);
-                whichTool("pen");
-                setUse(colour);
-              }}
-            />
-          </div>
-        ))}
+        {colours.map((colour) => {
+          const className = `c-${colour.slice(1).toLowerCase()}-buttonColour`;
+          return (
+            <div key={colour}>
+              <button
+                className={`colour-button-base ${className} ${
+                  currentInUse === colour ? "outlined" : ""
+                }`}
+                onClick={() => {
+                  whichColour(colour);
+                  whichTool("pen");
+                  setUse(colour);
+                }}
+              />
+            </div>
+          );
+        })}
+
         {tools.map((tool) => (
           <div key={tool}>
             <button
@@ -55,11 +82,18 @@ function DrawPage() {
                 setUse(tool);
               }}
             >
-              {tool}
+              <i className="fas fa-eraser"></i>
             </button>
           </div>
         ))}
-        <button className="clearButton" onClick={clearFunction}>Clear</button>
+
+        <button className="clearButton" onClick={() => {
+          const confirmed = window.confirm("Are you sure? All progress will be lost.")
+          if (confirmed) {{clearFunction()}}
+          }}>
+          <i className="fas fa-trash-alt"></i>
+        </button>
+
         <input
           type="range"
           min="1"
@@ -68,6 +102,7 @@ function DrawPage() {
           onChange={(e) => changeBrushSize(Number(e.target.value))}
         />
         <button onClick={downloadCanvas}>Download</button>
+        <button onClick ={convertToAI}>Convert to AI</button>
       </div>
 
       <DrawCanvas

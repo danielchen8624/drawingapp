@@ -1,81 +1,124 @@
 .hotbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  padding: 10px;
+}
+.eraser-tool {
+  background-color: #e5e7eb;
+  color: #111827;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.clearButton {
+  background-color: #f87171; /* light red */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.red-buttonColour {
-  background-color: red;
-  padding: 15px 15px;
-  margin: 5px 2px;
+.colour-button-base {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  margin: 2px;
   border: none;
-  border-radius: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.eraser-button-base {
+  width: 60px;
+  height: 30px;
+  padding: 0;
+  margin: 5px;
+  border: none;
+  border-radius: 50%;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
 }
 
-.blue-buttonColour {
-  background-color: blue;
-  padding: 15px 15px;
-  margin: 5px 2px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none; /* what does this do */
+.c-ef4444-buttonColour {
+  background-color: #ef4444;
+}
+.c-ffffff-buttonColour {
+  background-color: #ffffff;
+}
+.c-000000-buttonColour {
+  background-color: #000000;
+}
+.c-ef4444-buttonColour {
+  background-color: #ef4444;
+}
+.c-f97316-buttonColour {
+  background-color: #f97316;
+}
+.c-facc15-buttonColour {
+  background-color: #facc15;
+}
+.c-10b981-buttonColour {
+  background-color: #10b981;
+}
+.c-22d3ee-buttonColour {
+  background-color: #22d3ee;
+}
+.c-3b82f6-buttonColour {
+  background-color: #3b82f6;
+}
+.c-6366f1-buttonColour {
+  background-color: #6366f1;
+}
+.c-8b5cf6-buttonColour {
+  background-color: #8b5cf6;
+}
+.c-ec4899-buttonColour {
+  background-color: #ec4899;
+}
+.c-d946ef-buttonColour {
+  background-color: #d946ef;
+}
+.c-6b7280-buttonColour {
+  background-color: #6b7280;
+}
+.c-a855f7-buttonColour {
+  background-color: #a855f7;
+}
+.c-84cc16-buttonColour {
+  background-color: #84cc16;
+}
+.c-14b8a6-buttonColour {
+  background-color: #14b8a6;
+}
+.c-f43f5e-buttonColour {
+  background-color: #f43f5e;
 }
 
-.green-buttonColour {
-  background-color: green;
-  padding: 15px 15px;
-  margin: 5px 2px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
+/* Tool button */
+.eraser-tool {
+  background-color: #e5e7eb;
+  color: #111827;
 }
 
-.yellow-buttonColour {
-  background-color: yellow;
-  padding: 15px 15px;
-  margin: 5px 2px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-.pink-buttonColour {
-  background-color: pink;
-  padding: 15px 15px;
-  margin: 5px 2px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-/*.eraser-tool {
-  button {
-    color: pink;
-  }
-  background-color: pink;
-  padding: 15px 15px;
-  margin: 5px 2px;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-*/
-.outlined{
+/* Active outline */
+.outlined {
   border: 2px solid black;
-  border-radius: 4px;
+  border-radius: 6px;
 }
-

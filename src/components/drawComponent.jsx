@@ -1,14 +1,15 @@
-import {useRef, useEffect} from 'react';
+import { useRef, useEffect } from "react";
 
 function DrawCanvas({ colour, tool, size, clearButton, canvasRef }) {
   const isPainting = useRef(false);
   const ctx = useRef(null);
-  
+
   useEffect(() => {
     if (ctx.current) {
       if (tool === "eraser") {
         ctx.current.globalCompositeOperation = "destination-out";
         ctx.current.strokeStyle = "rgba(0,0,0,1)";
+        ctx.current.lineWidth = size;
       } else {
         ctx.current.globalCompositeOperation = "source-over";
         ctx.current.strokeStyle = colour;
@@ -26,6 +27,9 @@ function DrawCanvas({ colour, tool, size, clearButton, canvasRef }) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     ctx.current = canvas.getContext("2d");
+    ctx.current.lineWidth = size;
+    ctx.current.strokeStyle = colour;
+    ctx.current.lineCap = "round";
 
     canvas.addEventListener("mousedown", StartPosition);
     canvas.addEventListener("mouseup", EndPosition);
